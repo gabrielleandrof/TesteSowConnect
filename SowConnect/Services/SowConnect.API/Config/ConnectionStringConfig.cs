@@ -1,4 +1,4 @@
-﻿namespace SowConnect.Cadastro.API.Config
+﻿namespace SowConnect.API.Config
 {
     public class ConnectionStringConfig
     {

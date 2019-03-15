@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SowConnect.Cadastro.API.Controllers
+namespace SowConnect.API.Controllers
 {
     [Route("api/[controller]")]
-    public class BancosController : Controller
+    public class TransacoesController : Controller
     {
         // GET: api/<controller>
         [HttpGet]

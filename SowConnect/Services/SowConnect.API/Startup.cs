@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SowConnect.Cadastro.API.Config;
+using SowConnect.API.Config;
 
-namespace SowConnect.Cadastro.API
+namespace SowConnect.API
 {
     public class Startup
     {
@@ -27,9 +27,9 @@ namespace SowConnect.Cadastro.API
                 options.DescribeAllEnumsAsStrings();
                 options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
                 {
-                    Title = "CadastroAPI",
+                    Title = "API",
                     Version = "v1",
-                    Description = "Cadastros de cliente e bancos",
+                    Description = "Cadastro e transacoes em conta bancaria",
                     TermsOfService = ""
                 });
             });

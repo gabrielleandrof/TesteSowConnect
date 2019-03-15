@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace SowConnect.Transacao.API
+namespace SowConnect.API
 {
     public class Program
     {
