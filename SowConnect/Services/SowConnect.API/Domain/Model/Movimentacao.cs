@@ -11,9 +11,10 @@ namespace SowConnect.API.Domain.Model
 
     public class Movimentacao
     {
+        public int Id { get; set; }
         public TipoMovimentacao TipoMovimentacao { get; set; }
-        public ContaBancaria ContaOrigem { get; set; }
-        public ContaBancaria ContaDestino { get; set; }
+        public int IdContaOrigem { get; set; }
+        public int IdContaDestino { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataMovimentacao { get; set; }
     }

@@ -8,9 +8,17 @@
 
     public class Cliente
     {
-        public TipoCliente TipoCliente { get; set; }
+        public Cliente()
+        {
+            this.Id = 0;
+            this.IdBanco = 0;
+            this.TipoCliente = 0;
+            this.Nome = string.Empty;
+        }
+
         public int Id { get; set; }
+        public int IdBanco { get; set; }
+        public TipoCliente TipoCliente { get; set; }
         public string Nome { get; set; }
-        public string Cpf { get; set; }
     }
 }

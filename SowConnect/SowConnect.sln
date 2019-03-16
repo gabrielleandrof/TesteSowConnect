@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{80D28247-78B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SowConnect.Web", "Web\SowConnect.Web\SowConnect.Web.csproj", "{5C7865D7-AA6D-4688-A2AE-D219DF7B56F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SowConnect.API", "Services\SowConnect.API\SowConnect.API.csproj", "{646795D8-9D27-42D9-B023-7481E661EF52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SowConnect.API", "Services\SowConnect.API\SowConnect.API.csproj", "{646795D8-9D27-42D9-B023-7481E661EF52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
