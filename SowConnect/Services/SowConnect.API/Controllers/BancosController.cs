@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using SowConnect.API.Config;
 using SowConnect.API.Domain.Data;
 using SowConnect.API.Domain.Model;
+using System.Collections.Generic;
 
 namespace SowConnect.API.Controllers
 {
@@ -39,25 +35,10 @@ namespace SowConnect.API.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void InserirBanco([FromBody]string value)
+        public void InserirBanco([FromBody]Banco banco)
         {
             BancoDal dal = new BancoDal(_connectionStringConfig);
-            Banco banco = new Banco();
-            banco.NomeInstituicao = "Teste S.A.";
-            banco.CodigoInstituicao = 1234;
             dal.InserirBanco(banco);
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

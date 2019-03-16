@@ -34,7 +34,7 @@ namespace SowConnect.API.Domain.Data
                                     VALUES
                                     (
                                         '{banco.NomeInstituicao}',
-                                        {banco.CodigoInstituicao}
+                                        '{banco.CodigoInstituicao}'
                                     )";
 
                     connection.Open();
@@ -79,7 +79,7 @@ namespace SowConnect.API.Domain.Data
                         Banco banco = new Banco();
                         banco.Id = dr.GetInt32(dr.GetOrdinal(COL_Id));
                         banco.NomeInstituicao = dr.GetString(dr.GetOrdinal(COL_NomeInstituicao));
-                        banco.CodigoInstituicao = dr.GetInt32(dr.GetOrdinal(COL_CodigoInstituicao));
+                        banco.CodigoInstituicao = dr.GetString(dr.GetOrdinal(COL_CodigoInstituicao));
                         bancos.Add(banco);
                     }
                     return bancos;
@@ -122,7 +122,7 @@ namespace SowConnect.API.Domain.Data
                         Banco banco = new Banco();
                         banco.Id = dr.GetInt32(dr.GetOrdinal(COL_Id));
                         banco.NomeInstituicao = dr.GetString(dr.GetOrdinal(COL_NomeInstituicao));
-                        banco.CodigoInstituicao = dr.GetInt32(dr.GetOrdinal(COL_CodigoInstituicao));
+                        banco.CodigoInstituicao = dr.GetString(dr.GetOrdinal(COL_CodigoInstituicao));
                         return banco;
                     }
                     return null;

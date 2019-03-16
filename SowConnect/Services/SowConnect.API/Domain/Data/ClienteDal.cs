@@ -36,7 +36,7 @@ namespace SowConnect.API.Domain.Data
                                     VALUES
                                     (
                                         {cliente.IdBanco},
-                                        {cliente.TipoCliente},
+                                        {(int)cliente.TipoCliente},
                                         '{cliente.Nome}'
                                     )";
 
