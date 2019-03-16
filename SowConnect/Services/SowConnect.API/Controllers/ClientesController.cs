@@ -35,7 +35,7 @@ namespace SowConnect.API.Controllers
 
         // GET api/<controller>/5
         [HttpGet]
-        [Route("api/Clientes/ObterClientePorBanco/{id}")]
+        [Route("ObterClientePorBanco/{id}")]
         public IEnumerable<Cliente> ObterClientePorBanco(int id)
         {
             ClienteDal dal = new ClienteDal(_connectionStringConfig);

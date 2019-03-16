@@ -41,9 +41,9 @@ namespace SowConnect.API.Domain.Data
                                     (
                                         {contaBancaria.IdBanco},
                                         {contaBancaria.IdCliente},
-                                        {contaBancaria.Agencia},
-                                        {contaBancaria.ContaCorrente},
-                                        {contaBancaria.Saldo}
+                                        '{contaBancaria.Agencia}',
+                                        '{contaBancaria.ContaCorrente}',
+                                        {contaBancaria.Saldo.ToString().Replace(",", ".")}
                                     )";
 
                     connection.Open();
@@ -94,8 +94,8 @@ namespace SowConnect.API.Domain.Data
                         contaBancaria.Id = dr.GetInt32(dr.GetOrdinal(COL_Id));
                         contaBancaria.IdBanco = dr.GetInt32(dr.GetOrdinal(COL_IdBanco));
                         contaBancaria.IdCliente = dr.GetInt32(dr.GetOrdinal(COL_IdCliente));
-                        contaBancaria.Agencia = dr.GetInt32(dr.GetOrdinal(COL_Agencia));
-                        contaBancaria.ContaCorrente = dr.GetInt32(dr.GetOrdinal(COL_ContaCorrente));
+                        contaBancaria.Agencia = dr.GetString(dr.GetOrdinal(COL_Agencia));
+                        contaBancaria.ContaCorrente = dr.GetString(dr.GetOrdinal(COL_ContaCorrente));
                         contaBancaria.Saldo = dr.GetDecimal(dr.GetOrdinal(COL_Saldo));
                         contas.Add(contaBancaria);
                     }
@@ -142,8 +142,8 @@ namespace SowConnect.API.Domain.Data
                         contaBancaria.Id = dr.GetInt32(dr.GetOrdinal(COL_Id));
                         contaBancaria.IdBanco = dr.GetInt32(dr.GetOrdinal(COL_IdBanco));
                         contaBancaria.IdCliente = dr.GetInt32(dr.GetOrdinal(COL_IdCliente));
-                        contaBancaria.Agencia = dr.GetInt32(dr.GetOrdinal(COL_Agencia));
-                        contaBancaria.ContaCorrente = dr.GetInt32(dr.GetOrdinal(COL_ContaCorrente));
+                        contaBancaria.Agencia = dr.GetString(dr.GetOrdinal(COL_Agencia));
+                        contaBancaria.ContaCorrente = dr.GetString(dr.GetOrdinal(COL_ContaCorrente));
                         contaBancaria.Saldo = dr.GetDecimal(dr.GetOrdinal(COL_Saldo));
                         return contaBancaria;
                     }
@@ -167,7 +167,7 @@ namespace SowConnect.API.Domain.Data
             {
                 try
                 {
-                    string query = $@"UPDATE ContaBancaria SET Saldo = {saldo} WHERE {COL_Id} = {id}";
+                    string query = $@"UPDATE ContaBancaria SET Saldo = {saldo.ToString().Replace(",", ".")} WHERE {COL_Id} = {id}";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
