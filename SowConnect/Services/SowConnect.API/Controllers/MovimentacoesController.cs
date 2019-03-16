@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SowConnect.API.Controllers
 {
     [Route("api/[controller]")]
-    public class TransacoesController : Controller
+    public class MovimentacoesController : Controller
     {
         // GET: api/<controller>
         [HttpGet]
