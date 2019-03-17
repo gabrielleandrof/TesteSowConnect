@@ -1,44 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using SowConnect.API.Config;
+using SowConnect.API.Domain.Data;
+using SowConnect.API.Domain.Model;
 
 namespace SowConnect.API.Controllers
 {
     [Route("api/[controller]")]
     public class MovimentacoesController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private readonly ConnectionStringConfig _connectionStringConfig;
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        public MovimentacoesController(IOptions<ConnectionStringConfig> options)
         {
-            return "value";
+            _connectionStringConfig = options.Value;
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Movimentacao movimentacao)
         {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            MovimentacaoDal dal = new MovimentacaoDal(_connectionStringConfig);
+            dal.InserirMovimentacao(movimentacao);
         }
     }
 }

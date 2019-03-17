@@ -11,6 +11,16 @@ namespace SowConnect.API.Domain.Model
 
     public class Movimentacao
     {
+        public Movimentacao()
+        {
+            Id = 0;
+            TipoMovimentacao = 0;
+            IdContaOrigem = 0;
+            IdContaDestino = 0;
+            Valor = 0;
+            DataMovimentacao = DateTime.Now;
+        }
+
         public int Id { get; set; }
         public TipoMovimentacao TipoMovimentacao { get; set; }
         public int IdContaOrigem { get; set; }
