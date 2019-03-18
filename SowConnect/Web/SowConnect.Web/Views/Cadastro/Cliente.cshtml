@@ -1,8 +1,53 @@
 ﻿
 @{
-    ViewData["Title"] = "Cliente";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Cliente";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+	{
+	<script src="@Url.Content("~/js/Cliente.js")"></script>
 }
 
-<h1>Cliente</h1>
+<div>
 
+	<div class="col-md-8 order-md-1">
+		<h1>Clientes</h1>
+		<h4 class="mb-3">Cadastrar novos clientes e gerar contas</h4>
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="txtNome">Nome</label>
+				<input type="text" class="form-control" id="txtNome" placeholder="" value="" required="">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 mb-3">
+				<label for="selBancos">Banco</label>
+				<select class="custom-select d-block w-100" id="selBancos"></select>
+			</div>
+		</div>
+		<hr class="mb-4">
+		<h4 class="mb-3">Tipo de Conta</h4>
+		<div class="d-block my-3">
+			<div class="custom-control custom-radio">
+				<input id="PF" name="tipoConta" type="radio" class="custom-control-input" checked="" value="0">
+				<label class="custom-control-label" for="PF">PF</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input id="PJ" name="tipoConta" type="radio" class="custom-control-input" value="1">
+				<label class="custom-control-label" for="PJ">PJ</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="txtSaldo">Saldo Inicial (R$)</label>
+				<input type="text" class="form-control" id="txtSaldo" placeholder="" value="" required="">
+			</div>
+		</div>
+		<hr class="mb-4">
+		<button class="btn btn-success" id="btnSalvar">Criar Nova Conta</button>
+	</div>
+	<hr />
+	<div>
+		<table id="grid"></table>
+	</div>
+</div>

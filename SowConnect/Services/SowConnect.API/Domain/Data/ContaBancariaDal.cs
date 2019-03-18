@@ -64,6 +64,53 @@ namespace SowConnect.API.Domain.Data
             }
         }
 
+        public List<ContaBancaria> ObterContas()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionStringConfig.Default))
+            {
+                try
+                {
+                    string query = $@"SELECT
+                                            {COL_Id},
+                                            {COL_IdBanco},
+                                            {COL_IdCliente},
+                                            {COL_Agencia},
+                                            {COL_ContaCorrente},
+                                            {COL_Saldo}
+                                        FROM
+                                            {TB_NAME}";
+
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.CommandType = CommandType.Text;
+                    command.CommandTimeout = 0;
+                    IDataReader dr = command.ExecuteReader();
+                    List<ContaBancaria> contas = new List<ContaBancaria>();
+                    while (dr.Read())
+                    {
+                        ContaBancaria contaBancaria = new ContaBancaria();
+                        contaBancaria.Id = dr.GetInt32(dr.GetOrdinal(COL_Id));
+                        contaBancaria.IdBanco = dr.GetInt32(dr.GetOrdinal(COL_IdBanco));
+                        contaBancaria.IdCliente = dr.GetInt32(dr.GetOrdinal(COL_IdCliente));
+                        contaBancaria.Agencia = dr.GetString(dr.GetOrdinal(COL_Agencia));
+                        contaBancaria.ContaCorrente = dr.GetString(dr.GetOrdinal(COL_ContaCorrente));
+                        contaBancaria.Saldo = dr.GetDecimal(dr.GetOrdinal(COL_Saldo));
+                        contas.Add(contaBancaria);
+                    }
+                    return contas;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    connection.Dispose();
+                    connection.Close();
+                }
+            }
+        }
+
         public List<ContaBancaria> ObterContasPorCliente(int idCliente)
         {
             using (SqlConnection connection = new SqlConnection(_connectionStringConfig.Default))

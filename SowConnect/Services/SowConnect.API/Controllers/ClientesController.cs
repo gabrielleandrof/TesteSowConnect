@@ -44,10 +44,10 @@ namespace SowConnect.API.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void InserirCliente([FromBody]Cliente cliente)
+        public object InserirCliente([FromBody]Cliente cliente)
         {
             ClienteDal dal = new ClienteDal(_connectionStringConfig);
-            dal.InserirCliente(cliente);
+            return dal.InserirCliente(cliente);
         }
     }
 }

@@ -3,7 +3,9 @@ using Microsoft.Extensions.Options;
 using SowConnect.API.Config;
 using SowConnect.API.Domain.Data;
 using SowConnect.API.Domain.Model;
+using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace SowConnect.API.Controllers
 {
@@ -35,10 +37,18 @@ namespace SowConnect.API.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void InserirBanco([FromBody]Banco banco)
+        public object InserirBanco([FromBody]Banco banco)
         {
-            BancoDal dal = new BancoDal(_connectionStringConfig);
-            dal.InserirBanco(banco);
+            try
+            {
+                BancoDal dal = new BancoDal(_connectionStringConfig);
+                dal.InserirBanco(banco);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception e)
+            {
+                return HttpStatusCode.InternalServerError;
+            }
         }
     }
 }

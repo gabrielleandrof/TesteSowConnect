@@ -1,8 +1,32 @@
 ﻿
 @{
-    ViewData["Title"] = "Banco";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Banco";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+	{
+	<script src="@Url.Content("~/js/Banco.js")"></script>
 }
 
-<h1>Banco</h1>
-
+<div>
+	<div class="col-md-8 order-md-1">
+		<h1>Bancos</h1>
+		<h4 class="mb-3">Cadastrar nova instituição financeira</h4>
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="firstName">Nome da Instituição</label>
+				<input type="text" class="form-control" id="txtNomeInstituicao" />
+			</div>
+			<div class="col-md-6 mb-3">
+				<label for="lastName">Código da Instituição</label>
+				<input type="text" maxlength="3" class="form-control" id="txtCodigoInstituicao" />
+			</div>
+		</div>
+		<hr class="mb-4">
+		<button id="btnSalvar" class="btn btn-success">Inserir</button>
+	</div>
+	<hr />
+	<div>
+		<table id="grid"></table>
+	</div>
+</div>

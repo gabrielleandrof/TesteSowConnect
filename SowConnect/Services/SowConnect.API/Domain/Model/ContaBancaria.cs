@@ -1,4 +1,6 @@
-﻿namespace SowConnect.API.Domain.Model
+﻿using System;
+
+namespace SowConnect.API.Domain.Model
 {
     public class ContaBancaria
     {
@@ -7,8 +9,7 @@
             this.Id = 0;
             this.IdBanco = 0;
             this.IdCliente = 0;
-            this.Agencia = string.Empty;
-            this.ContaCorrente = string.Empty;
+            this.GerarAgenciaConta();
             this.Saldo = 0;
         }
 
@@ -18,5 +19,13 @@
         public string Agencia { get; set; }
         public string ContaCorrente { get; set; }
         public decimal Saldo { get; set; }
+
+        private void GerarAgenciaConta()
+        {
+            Random rA = new Random();
+            this.Agencia = rA.Next().ToString().Substring(0, 4);
+            Random rCC = new Random();
+            this.ContaCorrente = rCC.Next().ToString().Substring(0, 5) + "-1";
+        }
     }
 }

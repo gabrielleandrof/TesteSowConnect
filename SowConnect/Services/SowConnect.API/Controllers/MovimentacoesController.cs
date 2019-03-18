@@ -3,6 +3,8 @@ using Microsoft.Extensions.Options;
 using SowConnect.API.Config;
 using SowConnect.API.Domain.Data;
 using SowConnect.API.Domain.Model;
+using System;
+using System.Net;
 
 namespace SowConnect.API.Controllers
 {
@@ -18,10 +20,18 @@ namespace SowConnect.API.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Movimentacao movimentacao)
+        public object Post([FromBody]Movimentacao movimentacao)
         {
-            MovimentacaoDal dal = new MovimentacaoDal(_connectionStringConfig);
-            dal.InserirMovimentacao(movimentacao);
+            try
+            {
+                MovimentacaoDal dal = new MovimentacaoDal(_connectionStringConfig);
+                dal.InserirMovimentacao(movimentacao);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception e)
+            {
+                return HttpStatusCode.InternalServerError;
+            }
         }
     }
 }

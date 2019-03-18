@@ -21,7 +21,7 @@ namespace SowConnect.API.Domain.Data
             this._connectionStringConfig = connectionStringConfig;
         }
 
-        public void InserirCliente(Cliente cliente)
+        public object InserirCliente(Cliente cliente)
         {
             using (SqlConnection connection = new SqlConnection(_connectionStringConfig.Default))
             {
@@ -38,13 +38,14 @@ namespace SowConnect.API.Domain.Data
                                         {cliente.IdBanco},
                                         {(int)cliente.TipoCliente},
                                         '{cliente.Nome}'
-                                    )";
+                                    ) 
+									SELECT @@IDENTITY";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
                     command.CommandType = CommandType.Text;
                     command.CommandTimeout = 0;
-                    command.ExecuteNonQuery();
+                    return command.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
